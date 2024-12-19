@@ -128,31 +128,6 @@ for ad, notu in alt_ortalama:
 
 
 """#py 
-"""
-
-DoğumYılıEhliyetSorgusu
-yıl = int(input("Doğum Yılını Girin :"))
-yas = 2024-yıl
-print("Yaşınız :",yas)
-
-if yas > 18:
-    print("Ehliyetttttt alabilirsin.")
-else:
-    print("Yaşınız Ehliyet Almak İçin Küçük")
-"""#py 
-
-
-"""
-
-
-"""#py AyakkabıNumarasıKontrolSistemi
-magaza = ['39','40','41','43','44','45']
-nmr = input("Almak İstediğiniz Ayakkabı Numarasını Girin :")
-
-if nmr in magaza:
-    print("Seçtiğiniz Beden Sepetinize Eklenmiştir.")
-else:
-    print("Seçtiğiniz Beden Tükenmiştir. ")
 
 
 
