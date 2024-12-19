@@ -72,21 +72,6 @@ Bitir
 
 #############################################################################
 
-
-
-"""#py otlmya gören geçtin/kaldın
-vize = int(input("Vize notun :"))
-Final = int(input("Final notun :"))
-
-ort = (vize*0.40)+(Final*0.60)
-
-print("Ortalaman: ",ort)
-if ort>50:
-    print("Geçtin")
-if ort<50:
-    print("Kaldın")
-"""
-
 """MuratAmcamınverdiğiProje
 # Öğrencilerin bilgilerini saklamak için boş listeler
 ogrenciler = []
@@ -125,12 +110,4 @@ for ad, notu in alt_ortalama:
 
 
 """
-
-
-"""#py 
-
-
-
-"""
-
 
