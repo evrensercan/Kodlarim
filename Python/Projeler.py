@@ -74,12 +74,6 @@ Bitir
 
 
 
-
-"""#py 2 sayı 4işlem
-
-"""
-
-
 """#py otlmya gören geçtin/kaldın
 vize = int(input("Vize notun :"))
 Final = int(input("Final notun :"))
@@ -92,30 +86,6 @@ if ort>50:
 if ort<50:
     print("Kaldın")
 """
-
-
-"""#py GirilenSayıAsalmı?
-
-dgr=int(input("Bir sayı girin:"))
-
-isPrime=True
-if(dgr<0):
-    print("Negatif bir sayı girdiniz. Pozitif bir sayı giriniz")
-elif(dgr>0 and dgr<2):
-    print("En küçük asal sayı 2'dir")
-else:
-    for i in range(2, int(dgr**0.5)+1):
-        if(dgr %1 ==0):
-            isPrime=False
-            break
-    if(isPrime):
-        print("(dgr) bir asal sayıdır")
-    else:
-        print("{dgr} bir asal sayı değildir")
-
-
-"""
-
 
 """MuratAmcamınverdiğiProje
 # Öğrencilerin bilgilerini saklamak için boş listeler
@@ -157,15 +127,7 @@ for ad, notu in alt_ortalama:
 """
 
 
-"""#py HavaDurumu
-hava_durumu = input("Hava nasıl? :")
-
-if hava_durumu == "Yağışlı":
-    print("Şemsiyeni Al!")
-if hava_durumu == "Karlı":
-    print("Atkını Giy!")
-else:
-    print("Piknik Yapılabilir")
+"""#py 
 """
 
 
