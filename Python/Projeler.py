@@ -26,31 +26,23 @@ Eğer (Bas>Bit)
     Yaz("Nebiçimişyapıyon")
 
     Yedek=Bas
-
     Bas=Bit
-
     Bit=Yedek
-
 sayaç (x=bas'den x=bit'e 1'er)    
     toplam = toplam + x
 
     eğer (x==bit)
-
         yaz("sonuç="+toplam)
 
-
     değilse
-
         yaz("aratoplam="+toplam)
-
-
 sayaçsonu
 Bitir
 
 """
 
 
-"""#pt Sayaç kullan örneği
+"""#pt Sayaç kullanım örneği
 
 Başla
 Sayaç ( x=1'den x=100'e kadar 1'er )
@@ -66,21 +58,21 @@ Başla
 vize,final,ortalama
 yaz("Vize giriniz :")
 oku vize
-yaz("final giriniz :")
+yaz("Final giriniz :")
 oku final
 ortalama = ((vize*0.4)+(final*0.6))
 yaz ("sonuç:" + ortalama)
-Eğer ortalama <49,5
-yaz("kaldınız")
+Eğer ortalama <50
+    yaz("kaldınız")
 Değilse 
-yaz ("geçtiniz")
+    yaz ("geçtiniz")
 Bitir
 
 """
 
 #############################################################################
 
-"""#py Ortalama hesaplama
+"""#py Vize-Final Ortalaması
 vze = input("Vize notunuzu girin :")
 fnl = input("Final notunuzu girin :")
 
@@ -89,23 +81,6 @@ ort = (int(vze)*0.4) + (int(fnl)*0.6)
 print(ort)
 
 
-"""
- 
- 
-"""#py Üçgenin hipotenüsünü bulma
-a = input("Üçgenin a kenarını girin :")
-
-
-b = input("Üçgenin b kenarını girin :")
-
-
-ckre = (int(a)**2 + int(b)**2)
-
-
-c = ckre**0.5
-
-
-print("Üçgenin c kenarı :" , c )
 """
 
 
