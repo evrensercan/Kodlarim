@@ -85,15 +85,7 @@ print(ort)
 
 
 """#py Dairenin çapını ve alanını bulma
-daireCap = input("Dairenin çapını girin : ")
-daireYrıCap = (int(daireCap)/2)
 
-
-Aln = (3*int(daireYrıCap)**2) 
-Çvr = (2*3*int(daireYrıCap))
-
-print("Dairenin Alanı :" , Aln)
-print("Dairenin Çevresi :" , Çvr) 
 """
 
 
