@@ -25,8 +25,8 @@ if nmr in magaza:
     if karar=='Evet':
         print("Ürün Sepetinize Eklenmiştir.")
     else:
-        print("Diğer ürünlere gözatın ",magaza)
         magaza.remove(nmr)  
+        print("Diğer ürünlere gözatın ",magaza)
 else: 
     print("Seçtiğiniz Beden Tükenmiştir.\nMevcut ürünlere gözatın: ",magaza) 
  
