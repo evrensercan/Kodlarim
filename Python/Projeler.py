@@ -111,3 +111,13 @@ for ad, notu in alt_ortalama:
 
 """
 
+"""
+liste = [ 'a', 'b', 'c']
+
+hedef_harf = input("Harf:")
+if hedef_harf in liste:
+    print('buldum')
+else:
+    liste.append(hedef_harf) #Hedef_Harfi_Listeye_Ekler
+    print("Girdiğin Harf Listede Yok Ekliyorum ==> Güncel Listen :",liste)
+"""
