@@ -5,23 +5,21 @@ nmr = input("Almak İstediğiniz Ayakkabı Numarasını Girin :")
 
 if nmr in magaza: 
  
-    if nmr==39: 
+    if nmr=='39': 
         print("Seçtiğiniz Ürünün Fiyatı 500TL ") 
-    if nmr==40:  
+    if nmr=='40':  
         print("Seçtiğiniz Ürünün Fiyatı 550TL ") 
-    if nmr==41:  
+    if nmr=='41':  
         print("Seçtiğiniz Ürünün Fiyatı 600TL ") 
-    if nmr==43:  
+    if nmr=='43':  
         print("Seçtiğiniz Ürünün Fiyatı 700TL ") 
-    if nmr==44:  
+    if nmr=='44':  
         print("Seçtiğiniz Ürünün Fiyatı 750TL ") 
     else :  
         print("Seçtiğiniz Ürünün Fiyatı 800TL ") 
         
          
-    karar = input("Sepete Eklensinmi?") 
-    if karar=='evet':
-        print("Ürün Sepetinize Eklenmiştir.")
+    karar = input("Sepete Eklensinmi? (Evet/Hayır) :").lower() 
     if karar=='Evet':
         print("Ürün Sepetinize Eklenmiştir.")
     else:
