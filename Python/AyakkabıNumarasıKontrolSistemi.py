@@ -1,23 +1,48 @@
 #AyakkabıNumarasıKontrolSistemi
-magaza = ['39','40','41','43','44','45']
-nmr = input("Almak İstediğiniz Ayakkabı Numarasını Girin :") 
+magaza = {
+    '39' : 500,
+    '40' : 600,
+    '41' : 700,
+    '43' : 800,
+    '44' : 900,
+    '45' : 1000
+    }
+nmr = input("\nAlmak İstediğiniz Ayakkabı Numarasını Girin :") 
+
+if nmr in magaza:
+    print("Mevcut")
+
+else: 
+    print("Seçtiğiniz Beden Tükenmiştir.\nMevcut ürünlere gözatın: ",magaza.keys())
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+"""
 if nmr in magaza: 
- 
-    if nmr=='39': 
-        print("Seçtiğiniz Ürünün Fiyatı 500TL ") 
-    if nmr=='40':  
-        print("Seçtiğiniz Ürünün Fiyatı 550TL ") 
-    if nmr=='41':  
-        print("Seçtiğiniz Ürünün Fiyatı 600TL ") 
-    if nmr=='43':  
-        print("Seçtiğiniz Ürünün Fiyatı 700TL ") 
-    if nmr=='44':  
-        print("Seçtiğiniz Ürünün Fiyatı 750TL ") 
-    else :  
-        print("Seçtiğiniz Ürünün Fiyatı 800TL ") 
-        
+    fiyat=magaza[nmr]
+    print("Seçtiğiniz Ürünün Fiyatı: ",fiyat,"TL")
          
     karar = input("Sepete Eklensinmi? (Evet/Hayır) :").lower() 
     if karar=='Evet':
@@ -28,3 +53,4 @@ if nmr in magaza:
 else: 
     print("Seçtiğiniz Beden Tükenmiştir.\nMevcut ürünlere gözatın: ",magaza) 
  
+"""
