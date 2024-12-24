@@ -3,7 +3,7 @@ sınava_girenler = []
 sınava_girmeyenler = []
 telafi_sınavına_girenler = []
 sıra_no = 0
-
+print("\n")
 
 for ogrenci in sınıftakiler:
     
@@ -20,6 +20,19 @@ for ogrenci in sınıftakiler:
         print("Hatalı İşlem")
 
 
-print("\nSınava Giren Öğrenciler: ===> ",sınava_girenler)
-print("Sınava Girmeyen Öğrenciler: ===> ",sınava_girmeyenler)
-print("Telafi Sınavına Giren Öğrenciler: ===> ",telafi_sınavına_girenler)
+print("\nSınava Giren Öğrenci Sayısı: => ",len(sınava_girenler))
+print("Sınava Girmeyen Öğrenci Sayısı: => ",len(sınava_girmeyenler))
+print("Telafi Sınavına Giren Öğrenci Sayısı: => ",len(telafi_sınavına_girenler))
+
+
+print("\nSınava Giren Öğrenciler:")
+for ogrenci in sınava_girenler:
+    print("\t-", ogrenci)
+    
+print("\nSınava Girmeyen Öğrenciler:")
+for ogrenci in sınava_girmeyenler:
+    print("\t-", ogrenci)
+
+print("\nTelafi Sınavına Giren Öğrenciler:")
+for ogrenci in telafi_sınavına_girenler:
+    print("\t-", ogrenci)
