@@ -38,7 +38,6 @@ sayaç (x=bas'den x=bit'e 1'er)
         yaz("aratoplam="+toplam)
 sayaçsonu
 Bitir
-
 """
 
 
@@ -53,7 +52,7 @@ Bitir
 """
 
 
-"""#pt Ortalama hesaplayım geçtin kaldın yazma
+"""#pt Ortalama hesaplayıp geçtin kaldın yazma
 Başla
 vize,final,ortalama
 yaz("Vize giriniz :")
@@ -70,43 +69,36 @@ Bitir
 
 """
 
-#############################################################################
 
-"""MuratAmcamınverdiğiProje
-ogrenciler = []
-notlar = []
-
-# Öğrenci bilgilerini alma
-for i in range(1, 7):
-    print(f"\n{i}. Öğrenci")
-    ad = input("Adı: ")
-    notu = int(input("Aldığı Not: "))
-    ogrenciler.append(ad)
-    notlar.append(notu)
-
-# Not ortalamasını hesaplama
-not_ortalama = sum(notlar) / len(notlar)
-print("\nSınıfın Not Ortalaması:", not_ortalama)
-
-# Ortalamaya göre gruplama
-ortalama_ust = []
-ortalama_alt = []
-
-for i in range(len(notlar)):
-    if notlar[i] > not_ortalama:
-        ortalama_ust.append(ogrenciler[i])
-    else:
-        ortalama_alt.append(ogrenciler[i])
-
-# Sonuçları yazdırma
-print("\nOrtalamadan yüksek not alan öğrenciler:")
-for ogr in ortalama_ust:
-    print("\t-", ogr)
-
-print("\nOrtalamadan düşük not alan öğrenciler:")
-for ogr in ortalama_alt:
-    print("\t-", ogr)
+"""#Asal Tespiti
+<Başla>
+sayı,asalmi=yanlış,x
+Yaz "Bir Sayı Girin?"
+Oku sayı
+Sayaç(x=2'den sayı-1'e kadar)
+    Eğer (sayı modx ==0)
+        asalmi=doğru
+SayaçSonu
+Eğer(asalmi==yanlış)
+    Yaz"Sayı Asaldır"
+Değilse
+    Yaz"Asal Değil"
+<Bitir>
+"""
 
 
+"""#Diziler
+<Başla>
+Dizi Sayılar[10], toplam=0, x
+Sayaç(x=0'dan x=9'a 1'er)
+    Yaz"Sayı Giriniz"
+    Oku Sayılar[x]
+Sayaçsonu
+Sayaç(x=0'dan x=9'a 1'er)
+    Eğer(Sayılar[x] mod==0)
+        toplam=toplam+Sayılar[x]
+Sayaçsonu
+<Bitir>
 
 """
+
