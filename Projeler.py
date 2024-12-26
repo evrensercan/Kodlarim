@@ -73,51 +73,40 @@ Bitir
 #############################################################################
 
 """MuratAmcamınverdiğiProje
-# Öğrencilerin bilgilerini saklamak için boş listeler
 ogrenciler = []
 notlar = []
 
-# 20 öğrencinin adını ve notunu al
-for i in range(1, 21):
-    print(f"{i}. öğrenci:")
+# Öğrenci bilgilerini alma
+for i in range(1, 7):
+    print(f"\n{i}. Öğrenci")
     ad = input("Adı: ")
-    notu = float(input("Aldığı Not: "))  # Notu ondalık da olabilir
+    notu = int(input("Aldığı Not: "))
     ogrenciler.append(ad)
     notlar.append(notu)
 
-# Ortalama hesaplama
-ortalama = sum(notlar) / len(notlar)
-print(f"\nSınıfın not ortalaması: {ortalama:.2f}")
+# Not ortalamasını hesaplama
+not_ortalama = sum(notlar) / len(notlar)
+print("\nSınıfın Not Ortalaması:", not_ortalama)
 
-# Ortalamanın üstündekiler ve altındakiler
-ust_ortalama = []
-alt_ortalama = []
+# Ortalamaya göre gruplama
+ortalama_ust = []
+ortalama_alt = []
 
 for i in range(len(notlar)):
-    if notlar[i] >= ortalama:
-        ust_ortalama.append((ogrenciler[i], notlar[i]))
+    if notlar[i] > not_ortalama:
+        ortalama_ust.append(ogrenciler[i])
     else:
-        alt_ortalama.append((ogrenciler[i], notlar[i]))
+        ortalama_alt.append(ogrenciler[i])
 
-# Çıktı verme
+# Sonuçları yazdırma
 print("\nOrtalamadan yüksek not alan öğrenciler:")
-for ad, notu in ust_ortalama:
-    print(f"{ad}: {notu:.2f}")
+for ogr in ortalama_ust:
+    print("\t-", ogr)
 
 print("\nOrtalamadan düşük not alan öğrenciler:")
-for ad, notu in alt_ortalama:
-    print(f"{ad}: {notu:.2f}")
+for ogr in ortalama_alt:
+    print("\t-", ogr)
 
 
-"""
 
-"""
-liste = [ 'a', 'b', 'c']
-
-hedef_harf = input("Harf:")
-if hedef_harf in liste:
-    print('buldum')
-else:
-    liste.append(hedef_harf) #Hedef_Harfi_Listeye_Ekler
-    print("Girdiğin Harf Listede Yok Ekliyorum ==> Güncel Listen :",liste)
 """
