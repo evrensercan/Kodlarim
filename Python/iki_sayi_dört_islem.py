@@ -1,13 +1,13 @@
 #İki Sayı Dört İşlem
-ilk = input("İlk sayıyı girin :")
-iki = input("İkinci sayıyı girin :")
+ilk = int(input("\nİlk sayıyı girin :"))
+iki = int(input("İkinci sayıyı girin :"))
 
+toplam=ilk+iki
+fark=ilk-iki
+çarpım=ilk*iki
+bölüm=ilk/iki
 
-toplam=int(ilk)+int(iki)
-fark=int(ilk)-int(iki)
-çarpım=int(ilk)*int(iki)
-bölüm=int(ilk)/int(iki)
-
+print("\n...Sonuçlar...")
 print("İki Sayının Taplamı :",toplam)
 print("İki Sayının Farkı :",fark)
 print("İki Sayının Çarpımı :",çarpım)
