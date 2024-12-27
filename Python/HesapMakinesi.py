@@ -10,7 +10,7 @@ print("""
       6-Mod Alma(%)
  
 """)
-islem=input("Bir İşlem Seçin (1/2/3/4) :")
+islem=input("Bir İşlem Seçin (1/2/3/4/5/6) :")
 
 ilk = int(input("\nİlk sayıyı girin :"))
 iki = int(input("İkinci sayıyı girin :"))
@@ -32,9 +32,11 @@ elif islem=="3":
     print("\nÇarpma İşleminin Sonucu ==> ",sonuc)
 
 elif islem=="4":
-    
-    sonuc = ilk / iki
-    print("\nBölme İşleminin Sonucu ==> ",sonuc)
+    if iki==0:
+        print("\n!!!Bir sayı 0'a bölünemez!!!")
+    else:
+        sonuc= ilk / iki
+        print("\nBölme İşleminin Sonucu ==> ", sonuc)
 
 elif islem =="5":
     
