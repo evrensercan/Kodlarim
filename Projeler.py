@@ -99,6 +99,19 @@ Sayaç(x=0'dan x=9'a 1'er)
         toplam=toplam+Sayılar[x]
 Sayaçsonu
 <Bitir>
-
 """
 
+
+"""#pt Listenin en büyük değerini bulma
+<Başla>
+Liste = [4, 7, 1, 9, 3]
+En_Büyük_Değer = Liste[0]
+
+Sayaç (Sayı in Liste)
+    Eğer Sayı > En_Büyük_Değer
+        En_Büyük_Değer = Sayı
+Sayaçsonu
+
+Yaz("En Büyük Değer: " + En_Büyük_Değer)
+<Bitir>
+"""
