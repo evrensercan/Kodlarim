@@ -102,6 +102,140 @@ Sayaçsonu
 """
 
 
+"""#pt PC'nin belirlediği (1-50 arası) 7 sayı ile kullanıcının girdiği 7 sayıyı tahmin etme oyunu
+<Başla>
+Dizi PC_Sayıları[7], Dizi Kullanıcı_Sayıları[7], Puan = 0, x, y
+
+Sayaç (x = 0'dan PC_Sayıları.ElemanSayısı - 1'e kadar)
+    PC_Sayıları[x] = RastgeleSayı(1, 50)
+SayaçSonu
+
+Sayaç (y = 0'dan Kullanıcı_Sayıları.ElemanSayısı - 1'e kadar)
+    Yaz "Sayı Giriniz (1-50 arası):"
+    Oku Kullanıcı_Sayıları[y]
+SayaçSonu
+
+Sayaç (x = 0'dan PC_Sayıları.ElemanSayısı - 1'e kadar)
+    Sayaç (y = 0'dan Kullanıcı_Sayıları.ElemanSayısı - 1'e kadar)
+        Eğer (PC_Sayıları[x] == Kullanıcı_Sayıları[y])
+            Puan = Puan + 20
+        EğerSonu
+    SayaçSonu
+SayaçSonu
+
+Yaz "Puanınız = " + Puan
+<Bitir>
+"""
+
+"""#pt Kullanıcının kendi belirlediği kadar sayı girmesi, bu sayıların toplamını bulması ve ters çevirerek yazdırması
+Başla
+Değişkenler: Adet, x, Toplam = 0, Kadcefa, Yedek
+Yaz "Kaç adet sayı gireceksiniz?"
+Oku Adet
+
+Dizi Sayılar[Adet]
+
+Sayaç (x = 0'dan Sayılar.ElemanSayısı - 1'e kadar)
+    Yaz "Sayı giriniz:"
+    Oku Sayılar[x]
+SayaçSonu
+
+Sayaç (x = 0'dan Sayılar.ElemanSayısı - 1'e kadar)
+    Toplam = Toplam + Sayılar[x]
+SayaçSonu
+
+Yaz "Sayıların Toplamı = " + Toplam
+
+Kadcefa = TamSayı(Sayılar.ElemanSayısı / 2)
+
+Sayaç (x = 0'dan Kadcefa - 1'e kadar)
+    Yedek = Sayılar[x]
+    Sayılar[x] = Sayılar[Sayılar.ElemanSayısı - 1 - x]
+    Sayılar[Sayılar.ElemanSayısı - 1 - x] = Yedek
+SayaçSonu
+
+Sayaç (x = 0'dan Sayılar.ElemanSayısı - 1'e kadar)
+    Yaz Sayılar[x]
+SayaçSonu
+
+Bitir
+"""
+
+"""#pt Kullanıcının belirttiği kadar sayı girip toplamını ve tersini yazdırma
+Başla
+Değişkenler: adet, x, toplam = 0, kadcefa, yedek
+Yaz "Kaç adet sayı gireceksiniz?"
+Oku adet
+
+Dizi sayılar[adet]
+
+# Kullanıcıdan sayıları al
+Sayaç (x = 0'dan sayılar.ElemanSayısı - 1'e kadar)
+    Yaz "Sayı giriniz:"
+    Oku sayılar[x]
+SayaçSonu
+
+# Sayıların toplamını hesapla
+Sayaç (x = 0'dan sayılar.ElemanSayısı - 1'e kadar)
+    toplam = toplam + sayılar[x]
+SayaçSonu
+Yaz "Sayıların toplamı = " + toplam
+
+# Diziyi ters çevir
+kadcefa = TamSayı(sayılar.ElemanSayısı / 2)
+Sayaç (x = 0'dan kadcefa - 1'e kadar)
+    yedek = sayılar[x]
+    sayılar[x] = sayılar[sayılar.ElemanSayısı - 1 - x]
+    sayılar[sayılar.ElemanSayısı - 1 - x] = yedek
+SayaçSonu
+
+# Ters çevrilen diziyi yazdır
+Sayaç (x = 0'dan sayılar.ElemanSayısı - 1'e kadar)
+    Yaz sayılar[x]
+SayaçSonu
+
+Bitir
+
+"""
+
+"""#pt Kullanıcının belirttiği kadar sayı girerek, bu sayıların toplamını bulma ve elemanları ters çevirme
+Başla
+Değişkenler: kactane, toplam = 0, x, islemsayisi, yedek
+Yaz "Kaç sayı toplayacaksınız?"
+Oku kactane
+
+Dizi sayılar[kactane]
+
+# Kullanıcıdan sayıları al
+Sayaç (x = 0'dan sayılar.ElemanSayısı - 1'e kadar 1'er)
+    Yaz "Sayı gir:"
+    Oku sayılar[x]
+SayaçSonu
+
+# Sayıların toplamını hesapla
+Sayaç (x = 0'dan sayılar.ElemanSayısı - 1'e kadar 1'er)
+    toplam = toplam + sayılar[x]
+SayaçSonu
+Yaz "Sayıların toplamı = " + toplam
+
+# Diziyi ters çevir
+islemsayisi = TamSayı(sayılar.ElemanSayısı / 2)
+Sayaç (x = 0'dan islemsayisi - 1'e kadar 1'er)
+    yedek = sayılar[x]
+    sayılar[x] = sayılar[sayılar.ElemanSayısı - 1 - x]
+    sayılar[sayılar.ElemanSayısı - 1 - x] = yedek
+SayaçSonu
+
+# Ters çevrilen diziyi yazdır
+Sayaç (x = 0'dan sayılar.ElemanSayısı - 1'e kadar 1'er)
+    Yaz sayılar[x]
+SayaçSonu
+
+Bitir
+
+"""
+
+
 """#pt Listenin en büyük değerini bulma
 <Başla>
 Liste = [4, 7, 1, 9, 3]
@@ -115,3 +249,6 @@ Sayaçsonu
 Yaz("En Büyük Değer: " + En_Büyük_Değer)
 <Bitir>
 """
+
+
+
