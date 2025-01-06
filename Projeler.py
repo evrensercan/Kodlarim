@@ -255,28 +255,28 @@ Yaz("En Büyük Değer: " + En_Büyük_Değer)
 """#pt Diziyi Ters Çevirme Algoritması
 Başla 
 
-Değişkenler: Dizi_Boyut, Dizi Sayılarım[Dizi_Boyut], x, TamSayı, Yedek
+Değişkenler: KacTane, Dizi Sayılarım[KacTane], x, TamSayı, Yedek
 
 Yaz "Dizinin boyutunu gir:"
-Oku Dizi_Boyut
+Oku KacTane
 
-Dizi Sayılarım[Dizi_Boyut]
+Dizi Sayılarım[KacTane]
 
-Sayaç (x = 0'dan Dizi_Boyut - 1'e kadar)
+Sayaç (x = 0'dan KacTane - 1'e kadar)
     Yaz "Dizinin " + (x + 1) + ". elemanını gir:"
     Oku Sayılarım[x]
 SayaçSonu
 
-TamSayı = Tamsayı(Dizi_Boyut / 2)
+TamSayı = Tamsayı(KacTane / 2)
 
 Sayaç (x = 0'dan TamSayı - 1'e kadar)
     Yedek = Sayılarım[x]
-    Sayılarım[x] = Sayılarım[Dizi_Boyut - 1 - x]
-    Sayılarım[Dizi_Boyut - 1 - x] = Yedek
+    Sayılarım[x] = Sayılarım[KacTane - 1 - x]
+    Sayılarım[KacTane - 1 - x] = Yedek
 SayaçSonu
 
 Yaz "Dizinin Ters Çevirilmiş Hali:"
-Sayaç (x = 0'dan Dizi_Boyut - 1'e kadar)
+Sayaç (x = 0'dan KacTane - 1'e kadar)
     Yaz Sayılarım[x]
 SayaçSonu
 
