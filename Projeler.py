@@ -252,3 +252,56 @@ Yaz("En Büyük Değer: " + En_Büyük_Değer)
 
 
 
+"""#pt Diziyi Ters Çevirme Algoritması
+Başla 
+
+Değişkenler: Dizi_Boyut, Dizi Sayılarım[Dizi_Boyut], x, TamSayı, Yedek
+
+Yaz "Dizinin boyutunu gir:"
+Oku Dizi_Boyut
+
+Dizi Sayılarım[Dizi_Boyut]
+
+Sayaç (x = 0'dan Dizi_Boyut - 1'e kadar)
+    Yaz "Dizinin " + (x + 1) + ". elemanını gir:"
+    Oku Sayılarım[x]
+SayaçSonu
+
+TamSayı = Tamsayı(Dizi_Boyut / 2)
+
+Sayaç (x = 0'dan TamSayı - 1'e kadar)
+    Yedek = Sayılarım[x]
+    Sayılarım[x] = Sayılarım[Dizi_Boyut - 1 - x]
+    Sayılarım[Dizi_Boyut - 1 - x] = Yedek
+SayaçSonu
+
+Yaz "Dizinin Ters Çevirilmiş Hali:"
+Sayaç (x = 0'dan Dizi_Boyut - 1'e kadar)
+    Yaz Sayılarım[x]
+SayaçSonu
+
+Bitir
+"""
+
+"""#pt En Büyük Sayıyı Bulma
+
+Başla
+Dizi Listeem[5], x
+Değişken En_buyuk_sayı = 0
+
+Sayaç(x=0'dan x=Listeem.ElemanSayısı-1'e kadar)
+    Yaz("Listenin " + (x+1) + ". elemanını girin:")
+    Oku Listeem[x]
+SayaçSonu
+
+En_buyuk_sayı = Listeem[0]  # İlk eleman en büyük olarak belirlenir
+
+Sayaç(x=1'den x=Listeem.ElemanSayısı-1'e kadar)
+    Eğer Listeem[x] > En_buyuk_sayı
+        En_buyuk_sayı = Listeem[x]
+SayaçSonu
+
+Yaz("Listedeki en büyük sayı: " + En_buyuk_sayı)
+Bitir"""
+
+
