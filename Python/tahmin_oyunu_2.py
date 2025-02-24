@@ -4,6 +4,7 @@ print("\n\n\tSayı Tahmin.2 Oyununa Hoşgeldiniz")
 rastgele_sayi=random.randint(1, 7)
 snf=["Evren","Aylin","Can","Elif","Arda","Ceyda","Kerem"]
 print("\nOyuncular ==> ",snf)
+print("[1 ile 7 arasında bi sayı tahmin edin.]")
 for ogrenci in snf:
     tahmin = int(input(f"\t\n{ogrenci} Tahmini :")) 
     if rastgele_sayi == tahmin:
