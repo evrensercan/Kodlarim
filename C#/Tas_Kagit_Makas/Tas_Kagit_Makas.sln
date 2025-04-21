@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35825.156 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tas_Kagit_Makas", "Tas_Kagit_Makas\Tas_Kagit_Makas.csproj", "{6CE1C441-24CB-4D75-A863-FFEFD0B307FB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6CE1C441-24CB-4D75-A863-FFEFD0B307FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CE1C441-24CB-4D75-A863-FFEFD0B307FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CE1C441-24CB-4D75-A863-FFEFD0B307FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CE1C441-24CB-4D75-A863-FFEFD0B307FB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EC4D3916-856E-4871-9CE5-35E4EE28D538}
+	EndGlobalSection
+EndGlobal

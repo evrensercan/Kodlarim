@@ -1,0 +1,7 @@
+C:\Kodlarim\C#\Tas_Kagit_Makas\Tas_Kagit_Makas\bin\Debug\Tas_Kagit_Makas.exe.config
+C:\Kodlarim\C#\Tas_Kagit_Makas\Tas_Kagit_Makas\bin\Debug\Tas_Kagit_Makas.exe
+C:\Kodlarim\C#\Tas_Kagit_Makas\Tas_Kagit_Makas\bin\Debug\Tas_Kagit_Makas.pdb
+C:\Kodlarim\C#\Tas_Kagit_Makas\Tas_Kagit_Makas\obj\Debug\Tas_Kagit_Makas.csproj.AssemblyReference.cache
+C:\Kodlarim\C#\Tas_Kagit_Makas\Tas_Kagit_Makas\obj\Debug\Tas_Kagit_Makas.csproj.CoreCompileInputs.cache
+C:\Kodlarim\C#\Tas_Kagit_Makas\Tas_Kagit_Makas\obj\Debug\Tas_Kagit_Makas.exe
+C:\Kodlarim\C#\Tas_Kagit_Makas\Tas_Kagit_Makas\obj\Debug\Tas_Kagit_Makas.pdb
