@@ -1,0 +1,7 @@
+C:\Kodlarim\C#\ATM_Simülasyonu\ATM_Simülasyonu\bin\Debug\ATM_Simülasyonu.exe.config
+C:\Kodlarim\C#\ATM_Simülasyonu\ATM_Simülasyonu\bin\Debug\ATM_Simülasyonu.exe
+C:\Kodlarim\C#\ATM_Simülasyonu\ATM_Simülasyonu\bin\Debug\ATM_Simülasyonu.pdb
+C:\Kodlarim\C#\ATM_Simülasyonu\ATM_Simülasyonu\obj\Debug\ATM_Simülasyonu.csproj.AssemblyReference.cache
+C:\Kodlarim\C#\ATM_Simülasyonu\ATM_Simülasyonu\obj\Debug\ATM_Simülasyonu.csproj.CoreCompileInputs.cache
+C:\Kodlarim\C#\ATM_Simülasyonu\ATM_Simülasyonu\obj\Debug\ATM_Simülasyonu.exe
+C:\Kodlarim\C#\ATM_Simülasyonu\ATM_Simülasyonu\obj\Debug\ATM_Simülasyonu.pdb
