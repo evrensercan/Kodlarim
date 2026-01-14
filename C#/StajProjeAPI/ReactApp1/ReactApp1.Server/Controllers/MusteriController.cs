@@ -6,71 +6,71 @@ namespace ReactApp1.Server.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class UrunController : Controller
+    public class MusteriController : Controller
     {
         // Servis nesnesini tutan değişken
-        private readonly UrunServis _urunServis;
+        private readonly MusteriServis _musteriServis;
 
         // Constructor: Servis sınıfını Dependency Injection ile alma
-        public UrunController(UrunServis urunServis)
+        public MusteriController(MusteriServis musteriServis)
         {
             // Servis bağımlılığını atama
-            _urunServis = urunServis;
+            _musteriServis = musteriServis;
         }
 
         //************************************************************
-        // 1) CREATE - Ürün Ekleme
+        // 1) CREATE - Müşteri Ekleme
         //************************************************************
 
         [HttpPost]
-        public IActionResult Create([FromBody] Urun urun)
+        public IActionResult Create([FromBody] Musteri musteri)
         {
-            // Servis katmanına ürünü göndererek veritabanına ekleme
-            _urunServis.Create(urun);
+            // Servis katmanına müşteri bilgilerini gönderme
+            _musteriServis.Create(musteri);
 
             // Başarılı işlem sonucu döndürme
-            return Ok(new { Message = "Ürün başarıyla veritabanına eklendi!" });
+            return Ok(new { Message = "Müşteri başarıyla veritabanına eklendi!" });
         }
 
         //************************************************************
-        // 2) READ - Ürün Listeleme
+        // 2) READ - Müşteri Listeleme
         //************************************************************
 
         [HttpGet]
         public IActionResult Get()
         {
-            // Servis katmanından tüm ürünleri alma
-            var urunListesi = _urunServis.GetUrunler();
+            // Servis katmanından tüm müşterileri alma
+            var musteriListesi = _musteriServis.GetMusteriler();
 
-            return Ok(urunListesi);
+            return Ok(musteriListesi);
         }
 
         //************************************************************
-        // 3) UPDATE - Ürün Güncelleme
+        // 3) UPDATE - Müşteri Güncelleme
         //************************************************************
 
         [HttpPut]
-        public IActionResult Update([FromBody] Urun urun)
+        public IActionResult Update([FromBody] Musteri musteri)
         {
-            // Servis katmanına güncellenecek ürünü gönderme
-            _urunServis.Update(urun);
+            // Servis katmanına güncellenecek müşteri bilgilerini gönderme
+            _musteriServis.Update(musteri);
 
             // Başarılı işlem sonucu döndürme
-            return Ok(new { Message = "Ürün başarıyla güncellendi!" });
+            return Ok(new { Message = "Müşteri başarıyla güncellendi!" });
         }
 
         //************************************************************
-        // 4) DELETE - Ürün Silme
+        // 4) DELETE - Müşteri Silme
         //************************************************************
 
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            // Servis katmanına silinecek ürün ID'sini gönderme
-            _urunServis.Delete(id);
+            // Servis katmanına silinecek müşteri ID'sini gönderme
+            _musteriServis.Delete(id);
 
             // Başarılı işlem sonucu döndürme
-            return Ok(new { Message = "Ürün başarıyla silindi!" });
+            return Ok(new { Message = "Müşteri başarıyla silindi!" });
         }
     }
 }
