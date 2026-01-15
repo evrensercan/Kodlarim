@@ -1,7 +1,7 @@
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<ReactApp1.Server.Services.UrunServis>();
 builder.Services.AddScoped<ReactApp1.Server.Services.MusteriServis>();
-
+builder.Services.AddScoped<ReactApp1.Server.Services.SiparisServis>();
 
 
 // Add services to the container.
