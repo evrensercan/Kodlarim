@@ -4,7 +4,7 @@ builder.Services.AddScoped<ReactApp1.Server.Services.MusteriServis>();
 builder.Services.AddScoped<ReactApp1.Server.Services.SiparisServis>();
 
 
-// Add services to the container.
+
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
