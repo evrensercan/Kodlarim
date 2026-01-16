@@ -8,10 +8,14 @@ namespace ReactApp1.Server.Services
     public class SiparisServis
     {
         private readonly string _connectionString;
+        private readonly UrunServis _urunServis;
+        private readonly MusteriServis _musteriServis;
 
-        public SiparisServis(IConfiguration configuration)
+        public SiparisServis(IConfiguration configuration, UrunServis urunServis, MusteriServis musteriServis)
         {
             _connectionString = configuration.GetConnectionString("BaglantiCumlesi");
+            _urunServis = urunServis;
+            _musteriServis = musteriServis;
         }
 
         //************************
@@ -22,7 +26,7 @@ namespace ReactApp1.Server.Services
             using (SqlConnection baglanti = new SqlConnection(_connectionString))
             {
                 baglanti.Open();
-                // Tablo adı 'Siparis' olarak düzeltildi
+                
                 SqlCommand komut = new SqlCommand("INSERT INTO Siparis (MusteriId, UrunId, Adet, ToplamTutar, Durum) VALUES(@MusteriId, @UrunId, @Adet, @ToplamTutar, @Durum)", baglanti);
 
                 komut.Parameters.AddWithValue("@MusteriId", siparis.MusteriId);
@@ -43,7 +47,7 @@ namespace ReactApp1.Server.Services
             using (SqlConnection baglanti = new SqlConnection(_connectionString))
             {
                 baglanti.Open();
-                // Tablo adı 'Siparis' olarak düzeltildi
+
                 SqlCommand komut = new SqlCommand("DELETE FROM Siparis WHERE SiparisId=@SiparisId", baglanti);
 
                 komut.Parameters.AddWithValue("@SiparisId", id);
@@ -62,7 +66,7 @@ namespace ReactApp1.Server.Services
             using (SqlConnection baglanti = new SqlConnection(_connectionString))
             {
                 baglanti.Open();
-                // Tablo adı 'Siparis' olarak düzeltildi
+
                 SqlCommand komut = new SqlCommand("SELECT * FROM Siparis", baglanti);
 
                 SqlDataReader okuyucu = komut.ExecuteReader();
@@ -81,7 +85,15 @@ namespace ReactApp1.Server.Services
                     siparisler.Add(s);
                 }
             }
+
+            foreach (var item in siparisler)
+            {
+                item.Urun = _urunServis.Read(item.UrunId);
+                item.Musteri = _musteriServis.Read(item.MusteriId);
+            }
             return siparisler;
+
+            
         }
 
         //****************************
@@ -93,7 +105,6 @@ namespace ReactApp1.Server.Services
             {
                 baglanti.Open();
 
-                // KRİTİK DÜZELTME: Tablo adı 'Siparis' yapıldı ve sonuna WHERE şartı eklendi.
                 string sorgu = "UPDATE Siparis SET MusteriId=@MusteriId, UrunId=@UrunId, Adet=@Adet, ToplamTutar=@ToplamTutar, Durum=@Durum WHERE SiparisId=@SiparisId";
 
                 SqlCommand komut = new SqlCommand(sorgu, baglanti);
@@ -104,7 +115,6 @@ namespace ReactApp1.Server.Services
                 komut.Parameters.AddWithValue("@ToplamTutar", siparis.ToplamTutar);
                 komut.Parameters.AddWithValue("@Durum", siparis.Durum);
 
-                // ID parametresi eklendi (Hangi siparişin güncelleneceğini belirtmek için şart)
                 komut.Parameters.AddWithValue("@SiparisId", siparis.SiparisId);
 
                 komut.ExecuteNonQuery();

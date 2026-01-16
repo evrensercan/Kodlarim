@@ -17,6 +17,7 @@ namespace ReactApp1.Server.Services
         // 1) CREATE
         public void Create(Urun urun)
         {
+
             using (SqlConnection baglanti = new SqlConnection(_connectionString))
             {
                 baglanti.Open();
@@ -30,8 +31,8 @@ namespace ReactApp1.Server.Services
             }
         }
 
-        // 2) READ
-        public List<Urun> GetUrunler()
+        // 2) Read - LIST
+        public List<Urun> List()
         {
             List<Urun> urunler = new List<Urun>();
 
@@ -85,6 +86,35 @@ namespace ReactApp1.Server.Services
 
                 komut.ExecuteNonQuery();
             }
+        }
+
+
+        // 5) Id'si girilen ürünün bilgilerini getirir.
+        public Urun Read(int id)
+        {
+            Urun urun = null;
+
+            using (SqlConnection baglanti = new SqlConnection(_connectionString))
+            {
+                baglanti.Open();
+
+                SqlCommand komut = new SqlCommand("SELECT * FROM URUN WHERE UrunId = @id", baglanti);
+                komut.Parameters.AddWithValue("@id", id);
+                
+
+                SqlDataReader okuyucu = komut.ExecuteReader();
+                if (okuyucu.Read()) 
+                {
+                    urun = new Urun();
+                    urun.UrunId = Convert.ToInt32(okuyucu["UrunId"]);
+                    urun.Adi = okuyucu["Adi"].ToString();
+                    urun.Kodu = okuyucu["Kodu"].ToString();
+                    urun.Fiyat = Convert.ToDecimal(okuyucu["Fiyat"]);
+                }
+
+
+            }
+            return urun;
         }
     }
 }

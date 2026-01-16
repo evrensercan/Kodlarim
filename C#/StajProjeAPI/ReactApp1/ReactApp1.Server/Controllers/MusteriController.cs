@@ -72,5 +72,18 @@ namespace ReactApp1.Server.Controllers
             // Başarılı işlem sonucu döndürme
             return Ok(new { Message = "Müşteri başarıyla silindi!" });
         }
+
+        //Id - İsim Eşleştirme
+        [HttpGet("{id}")]
+        public IActionResult Read(int id)
+        {
+            var urun = _musteriServis.Read(id); //servisden ıd'yi getir
+
+            if (urun == null)
+            {
+                return NotFound(new { Message = "Müsteri bulunamadı!" });
+            }
+            return Ok(urun);
+        }
     }
 }

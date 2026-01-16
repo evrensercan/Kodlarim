@@ -8,5 +8,10 @@
         public int Adet { get; set; }
         public decimal ToplamTutar { get; set; }
         public string Durum { get; set; }
+        
+        public Musteri Musteri { get; set; }
+
+        public Urun Urun { get; set; }
+
     }
 }

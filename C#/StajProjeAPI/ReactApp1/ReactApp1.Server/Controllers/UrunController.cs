@@ -40,7 +40,7 @@ namespace ReactApp1.Server.Controllers
         public IActionResult Get()
         {
             // Servis katmanından tüm ürünleri alma
-            var urunListesi = _urunServis.GetUrunler();
+            var urunListesi = _urunServis.List();
 
             return Ok(urunListesi);
         }
@@ -71,6 +71,19 @@ namespace ReactApp1.Server.Controllers
 
             // Başarılı işlem sonucu döndürme
             return Ok(new { Message = "Ürün başarıyla silindi!" });
+        }
+
+        //Id - İsim Eşleştirme
+        [HttpGet("{id}")]
+        public IActionResult Read(int id)
+        {
+            var urun = _urunServis.Read(id); //servisden ıd'yi getir
+
+            if (urun == null)
+            {
+                return NotFound(new { Message = "Ürün bulunamadı!" });
+            }
+            return Ok(urun);
         }
     }
 }

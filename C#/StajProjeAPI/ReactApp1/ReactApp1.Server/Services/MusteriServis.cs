@@ -87,5 +87,38 @@ namespace ReactApp1.Server.Services
                 komut.ExecuteNonQuery();
             }
         }
+
+        // 5) Id'si girilen Müsterinin Bilgilerini Getirir.
+        public Musteri Read(int id)
+        {
+            Musteri musteri = null; 
+
+            using (SqlConnection baglanti = new SqlConnection(_connectionString))
+            {
+                baglanti.Open();
+
+               
+                string sorgu = "SELECT * FROM Musteri WHERE MusteriId=@id";
+
+                SqlCommand komut = new SqlCommand(sorgu, baglanti);
+                komut.Parameters.AddWithValue("@id", id);
+
+                SqlDataReader okuyucu = komut.ExecuteReader();
+
+                if (okuyucu.Read()) 
+                {
+                    musteri = new Musteri();
+
+                    musteri.MusteriId = Convert.ToInt32(okuyucu["MusteriId"]);
+                    musteri.AdSoyad = okuyucu["AdSoyad"].ToString();
+                    musteri.Adres = okuyucu["Adres"].ToString();
+                    musteri.TelNo = okuyucu["TelNo"].ToString();
+                    musteri.Mail = okuyucu["Mail"].ToString();
+
+
+                }
+            }
+            return musteri;
+        }
     }
 }
