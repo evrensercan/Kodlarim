@@ -59,12 +59,8 @@ namespace KutuphaneYonetimSistemi
 
             komut.Parameters.AddWithValue("@p1", textAd.Text);
             komut.Parameters.AddWithValue("@p2", textSoyad.Text);
-
-            
             komut.Parameters.AddWithValue("@p3", maskedTextBox1.Text);
-
             komut.Parameters.AddWithValue("@p4", textMail.Text);
-
             komut.ExecuteNonQuery();
             baglanti.Close();
 
@@ -104,18 +100,27 @@ namespace KutuphaneYonetimSistemi
 
             if (karar == DialogResult.Yes)
             {
-                baglanti.Open();
-               
-                SqlCommand komut = new SqlCommand("DELETE FROM TBL_UYE WHERE UyeID = @p1", baglanti);
-                komut.Parameters.AddWithValue("@p1", secilenUyeID);
+                try
+                {
+                    baglanti.Open();
 
-                komut.ExecuteNonQuery();
-                baglanti.Close();
+                    SqlCommand komut = new SqlCommand("DELETE FROM TBL_UYE WHERE UyeID = @p1", baglanti);
+                    komut.Parameters.AddWithValue("@p1", secilenUyeID);
+                    komut.ExecuteNonQuery();
 
-                MessageBox.Show("Üye Silindi!");
-                Listele(); 
-                Temizle(); 
-                secilenUyeID = "0"; 
+                    baglanti.Close();
+
+                    MessageBox.Show("Üye Silindi!");
+                    Listele();
+                    Temizle();
+                    secilenUyeID = "0";
+                }
+                catch (System.Data.SqlClient.SqlException ex)
+                {
+                    // Eğer veritabanı "İlişki Hatası" verirse burası çalışır
+                    baglanti.Close();
+                    MessageBox.Show("BU ÜYE SİLİNEMEZ!\n\nÇünkü bu üyenin kütüphanede işlem geçmişi (aldığı-verdiği kitaplar) var.\n\nVeri kaybını önlemek için sistem silmeye izin vermiyor.", "Güvenlik Uyarısı", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 

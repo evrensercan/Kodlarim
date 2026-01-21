@@ -11,36 +11,29 @@ using System.Windows.Forms;
 
 namespace KutuphaneYonetimSistemi
 {
-    public partial class IadeIslemForm: Form
+    public partial class IadeIslemForm : Form
     {
         SqlConnection baglanti = new SqlConnection("Server=LAPTOP-K7ECI3M9\\SQLEXPRESS;Database=KutuphaneYonetimSistemi_DB;Trusted_Connection=True;TrustServerCertificate=True;");
         string secilenHareketID = "0";
+
         public IadeIslemForm()
         {
             InitializeComponent();
         }
 
-        private void lblBilgi_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
+        private void lblBilgi_Click(object sender, EventArgs e) { }
+        private void label1_Click(object sender, EventArgs e) { }
 
         private void IadeIslemForm_Load(object sender, EventArgs e)
         {
             EmanetListesi();
         }
+
         void EmanetListesi()
         {
             baglanti.Open();
 
-            // İşte o meşhur JOIN sorgusu.
-            // Türkçesi: Hareket tablosunu al, Üye ve Kitap tablolarıyla birleştir.
-            // Şart: IadeTarihi NULL olanları (yani henüz geri gelmeyenleri) getir.
+            
             string sorgu = "SELECT HareketID, UyeAd + ' ' + UyeSoyad AS 'Üye', KitapAdi AS 'Kitap', AlisTarihi " +
                            "FROM TBL_HAREKET " +
                            "INNER JOIN TBL_UYE ON TBL_HAREKET.UyeID = TBL_UYE.UyeID " +
@@ -79,6 +72,33 @@ namespace KutuphaneYonetimSistemi
                 return;
             }
 
+            //------------CezaHesaplama------------------
+            DateTime alisTarihi = Convert.ToDateTime(dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["AlisTarihi"].Value);
+
+            DateTime bugun = DateTime.Now;
+
+            TimeSpan fark = bugun - alisTarihi;
+            int gunSayisi = fark.Days;
+
+            // 15 günü geçtiyse, gün başına 5 TL ceza
+            decimal cezaTutari = 0;
+            if (gunSayisi > 15)
+            {
+                int gecikenGun = gunSayisi - 15;
+                cezaTutari = gecikenGun * 5.0m;
+
+                DialogResult cezaOnay = MessageBox.Show("Kitap " + gecikenGun + " gün gecikmiş!\n\n"
+                    + "Tahsil Edilecek Ceza: " + cezaTutari.ToString("C2")
+                    + "\n\nCezayı tahsil ettiniz mi? İşleme devam edilsin mi?",
+                    "Gecikme Cezası", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+
+                if (cezaOnay == DialogResult.No)
+                {
+                    return; // Tahsil etmediyse işlemi iptal et
+                }
+            }
+            // -------------------------------------------
+
             baglanti.Open();
 
             // 1. ADIM: HAREKETİ KAPAT (İade Tarihini Gir)
@@ -88,8 +108,6 @@ namespace KutuphaneYonetimSistemi
             komutHareket.ExecuteNonQuery();
 
             // 2. ADIM: KİTABI RAFA KOY (Durumunu True Yap)
-            // Burası biraz pratik zeka: HareketID'den KitapID'yi bulup güncelliyoruz.
-            // "Bu hareketin içindeki kitabı bul ve durumunu 1 yap" diyoruz.
             SqlCommand komutKitap = new SqlCommand("UPDATE TBL_KİTAP SET Durum = 1 WHERE KitapID = (SELECT KitapID FROM TBL_HAREKET WHERE HareketID = @p3)", baglanti);
             komutKitap.Parameters.AddWithValue("@p3", secilenHareketID);
             komutKitap.ExecuteNonQuery();
@@ -103,5 +121,7 @@ namespace KutuphaneYonetimSistemi
             lblBilgi.Text = "...";
             secilenHareketID = "0";
         }
+
+        private void groupBox1_Enter(object sender, EventArgs e) { }
     }
 }

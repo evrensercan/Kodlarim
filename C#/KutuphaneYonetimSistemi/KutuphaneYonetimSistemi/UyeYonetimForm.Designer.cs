@@ -65,7 +65,7 @@
             this.btnGüncelle.ForeColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.btnGüncelle.Location = new System.Drawing.Point(305, 471);
             this.btnGüncelle.Name = "btnGüncelle";
-            this.btnGüncelle.Size = new System.Drawing.Size(117, 40);
+            this.btnGüncelle.Size = new System.Drawing.Size(191, 40);
             this.btnGüncelle.TabIndex = 20;
             this.btnGüncelle.Text = "GÜNCELLE";
             this.btnGüncelle.UseVisualStyleBackColor = false;

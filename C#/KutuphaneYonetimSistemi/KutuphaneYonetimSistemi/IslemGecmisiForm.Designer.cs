@@ -58,7 +58,7 @@
             // 
             // txtIslemAra
             // 
-            this.txtIslemAra.Location = new System.Drawing.Point(101, 87);
+            this.txtIslemAra.Location = new System.Drawing.Point(127, 87);
             this.txtIslemAra.Name = "txtIslemAra";
             this.txtIslemAra.Size = new System.Drawing.Size(250, 22);
             this.txtIslemAra.TabIndex = 2;

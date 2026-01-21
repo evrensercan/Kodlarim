@@ -111,9 +111,10 @@ namespace KutuphaneYonetimSistemi
             {
                 baglanti.Open();
 
-                SqlCommand sorgu = new SqlCommand("DELETE FROM TBL_KİTAP WHERE KitapID = @k1", baglanti);
+                SqlCommand sorgu = new SqlCommand("UPDATE TBL_KİTAP SET Durum = 0 WHERE KitapID = @k1", baglanti);
                 sorgu.Parameters.AddWithValue("@k1", secilenKitapID);
                 sorgu.ExecuteNonQuery(); 
+
                 baglanti.Close();
 
                 MessageBox.Show("Seçtiğin "+textAd.Text +" Kitabı Silindi!");
@@ -141,6 +142,7 @@ namespace KutuphaneYonetimSistemi
             baglanti.Close();
 
             MessageBox.Show("Kitap Bilgisi Güncellendi", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            btnListele.PerformClick();
             MessageBox.Show("Güncel Tabloyu Görmek İçin Listelemeyi Unutma");
 
         }

@@ -31,9 +31,9 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.lblBilgi = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.btnIadeAl = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblBilgi = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -61,17 +61,18 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "İade İşlemi";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // lblBilgi
+            // btnIadeAl
             // 
-            this.lblBilgi.AutoSize = true;
-            this.lblBilgi.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblBilgi.Location = new System.Drawing.Point(294, 36);
-            this.lblBilgi.Name = "lblBilgi";
-            this.lblBilgi.Size = new System.Drawing.Size(68, 46);
-            this.lblBilgi.TabIndex = 0;
-            this.lblBilgi.Text = "....";
-            this.lblBilgi.Click += new System.EventHandler(this.lblBilgi_Click);
+            this.btnIadeAl.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.btnIadeAl.Location = new System.Drawing.Point(461, 130);
+            this.btnIadeAl.Name = "btnIadeAl";
+            this.btnIadeAl.Size = new System.Drawing.Size(334, 58);
+            this.btnIadeAl.TabIndex = 2;
+            this.btnIadeAl.Text = "KİTABI TESLİM AL";
+            this.btnIadeAl.UseVisualStyleBackColor = false;
+            this.btnIadeAl.Click += new System.EventHandler(this.btnIadeAl_Click);
             // 
             // label1
             // 
@@ -84,16 +85,16 @@
             this.label1.Text = "Seçilen Kayıt:";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // btnIadeAl
+            // lblBilgi
             // 
-            this.btnIadeAl.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.btnIadeAl.Location = new System.Drawing.Point(461, 130);
-            this.btnIadeAl.Name = "btnIadeAl";
-            this.btnIadeAl.Size = new System.Drawing.Size(334, 58);
-            this.btnIadeAl.TabIndex = 2;
-            this.btnIadeAl.Text = "KİTABI TESLİM AL";
-            this.btnIadeAl.UseVisualStyleBackColor = false;
-            this.btnIadeAl.Click += new System.EventHandler(this.btnIadeAl_Click);
+            this.lblBilgi.AutoSize = true;
+            this.lblBilgi.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblBilgi.Location = new System.Drawing.Point(294, 36);
+            this.lblBilgi.Name = "lblBilgi";
+            this.lblBilgi.Size = new System.Drawing.Size(68, 46);
+            this.lblBilgi.TabIndex = 0;
+            this.lblBilgi.Text = "....";
+            this.lblBilgi.Click += new System.EventHandler(this.lblBilgi_Click);
             // 
             // IadeIslemForm
             // 

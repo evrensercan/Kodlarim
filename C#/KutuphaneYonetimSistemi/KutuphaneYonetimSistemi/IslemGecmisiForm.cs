@@ -22,16 +22,13 @@ namespace KutuphaneYonetimSistemi
 
         private void IslemGecmisiForm_Load(object sender, EventArgs e)
         {
-            // ComboBox içini dolduruyoruz (Garanti olsun)
             cmbFiltre.Items.Clear();
             cmbFiltre.Items.Add("Tüm İşlemler");
             cmbFiltre.Items.Add("İade Edilenler (Yeşil)");
             cmbFiltre.Items.Add("Teslim Bekleyenler (Kırmızı)");
 
-            // Varsayılan olarak "Tüm İşlemler" seçili gelsin
             cmbFiltre.SelectedIndex = 0;
 
-            // Listeyi getir
             FiltreliListele();
         }
 
@@ -45,6 +42,9 @@ namespace KutuphaneYonetimSistemi
 
                 // 1. Temel Sorgu (Her şeyi getiren iskelet)
                 // "WHERE 1=1" taktiği: Dinamik olarak "AND" ekleyebilmek için koyuyoruz.
+                //* Buradaki "WHERE 1=1" bir yazılımcı hilesidir. 1, 1'e her zaman eşittir.
+                //* Bunu koyuyoruz ki aşağıda "AND ..." diye ekleme yaparken "Acaba WHERE yazdım mı?" diye düşünmeyelim.
+                //* Bu sayede sorgu "WHERE 1=1 AND UyeAd..." şeklinde düzgünce devam eder.
                 string sorgu = "SELECT HareketID, UyeAd + ' ' + UyeSoyad AS 'Üye', KitapAdi AS 'Kitap', AlisTarihi, IadeTarihi " +
                                "FROM TBL_HAREKET " +
                                "INNER JOIN TBL_UYE ON TBL_HAREKET.UyeID = TBL_UYE.UyeID " +
@@ -99,6 +99,8 @@ namespace KutuphaneYonetimSistemi
         }
 
         // Tablo dolduktan sonra satırları boyayan kod
+        //* DataBindingComplete: Tabloya veriler dolduktan hemen sonra çalışan olaydır.
+        //* Burada tek tek satırları gezip boyama yapıyoruz.
         private void dataGridView1_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             foreach (DataGridViewRow satir in dataGridView1.Rows)
