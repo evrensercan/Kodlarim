@@ -1,6 +1,0 @@
-@StajProjeAPI_HostAddress = http://localhost:5112
-
-GET {{StajProjeAPI_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.13.35825.156
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StajProjeAPI", "StajProjeAPI\StajProjeAPI.csproj", "{ABAB9674-7058-4D54-AD1E-70B27A082C50}"
-EndProject
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "reactapp1.client", "ReactApp1\reactapp1.client\reactapp1.client.esproj", "{3FEEB8A9-4DA9-9B62-10D9-4F41E0E11944}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReactApp1.Server", "ReactApp1\ReactApp1.Server\ReactApp1.Server.csproj", "{22F80C59-E95A-4349-AB51-280E56432E4A}"
@@ -15,10 +13,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{ABAB9674-7058-4D54-AD1E-70B27A082C50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{ABAB9674-7058-4D54-AD1E-70B27A082C50}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ABAB9674-7058-4D54-AD1E-70B27A082C50}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{ABAB9674-7058-4D54-AD1E-70B27A082C50}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3FEEB8A9-4DA9-9B62-10D9-4F41E0E11944}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3FEEB8A9-4DA9-9B62-10D9-4F41E0E11944}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3FEEB8A9-4DA9-9B62-10D9-4F41E0E11944}.Debug|Any CPU.Deploy.0 = Debug|Any CPU

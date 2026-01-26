@@ -1,0 +1,30 @@
+.ana-sayfa {
+  display: flex;
+  /* Yan menü ve içerik alanını yatay olarak yerleştirir*/
+  height: 100vh;
+  /* Tam ekran yüksekliği */
+}
+
+.yan-menu {
+  width: 200px;
+  /* Yan menü genişliği */
+  border-right: 2px solid black;
+  /* Sağ kenar çizgisi */
+  padding: 20px;
+  /* İç boşluk */
+  background-color: #f0f0f0;
+  /* Yan menü arka plan rengi */
+  display: flex;
+  /* Flexbox kullanımı */
+  flex-direction: column;
+  /* Dikey yönlendirme */
+  gap: 10px;
+  /* Menü öğeleri arasındaki boşluk */
+}
+
+.panel {
+  flex: 1;
+  /* İçerik alanının kalan alanı kaplamasını sağlar */
+  padding: 20px;
+  /* İç boşluk */
+}
