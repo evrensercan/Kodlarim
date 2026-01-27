@@ -1,34 +1,47 @@
+using ReactApp1.Server.Services; // Servislerinin olduðu klasör
+
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddScoped<ReactApp1.Server.Services.UrunServis>();
-builder.Services.AddScoped<ReactApp1.Server.Services.MusteriServis>();
-builder.Services.AddScoped<ReactApp1.Server.Services.SiparisServis>();
 
 
+builder.Services.AddScoped<MusteriServis>();
+builder.Services.AddScoped<UrunServis>();
+// builder.Services.AddScoped<SiparisServis>();
 
+
+// --- 2. CORS AYARLARI (React ile konuþma izni) ---
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("ReactIzin", policy =>
+    {
+        policy.WithOrigins("http://localhost:5173") // React'ýn adresi
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+// --- 3. ARA KATMANLAR (Middleware) ---
+
 app.UseDefaultFiles();
 app.UseStaticFiles();
 
-// Configure the HTTP request pipeline.
+// Geliþtirme modundaysak Swagger'ý aç
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
+app.UseCors("ReactIzin"); // Ýzni devreye sok
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
 
-app.MapControllers();
-
+app.MapControllers(); // Þefleri (Controller) haritala
 app.MapFallbackToFile("/index.html");
 
-app.Run();
+app.Run(); // Motoru çalýþtýr

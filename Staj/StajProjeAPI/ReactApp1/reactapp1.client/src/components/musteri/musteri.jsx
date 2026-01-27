@@ -6,26 +6,25 @@
 import { Grid, GridColumn as Column, GridToolbar } from '@progress/kendo-react-grid';
 import { Dialog, DialogActionsBar } from '@progress/kendo-react-dialogs';
 import '@progress/kendo-theme-default/dist/all.css';
-import React, { useState } from 'react';
-
-// --- Test Verisi (10 Kişilik Liste) ---
-const ornekVeri = [
-    { MusteriId: 1, AdSoyad: "Evren Sercan", Adres: "İstanbul, Kadıköy", TelNo: "555-123-4567", Mail: "john@test.com" },
-    { MusteriId: 2, AdSoyad: "Ahmet Yılmaz", Adres: "Ankara, Çankaya", TelNo: "555-987-6543", Mail: "jane@test.com" },
-    { MusteriId: 3, AdSoyad: "Michael Brown", Adres: "İzmir, Bornova", TelNo: "555-456-7890", Mail: "michael@test.com" },
-    { MusteriId: 4, AdSoyad: "Emily Davis", Adres: "Bursa, Nilüfer", TelNo: "555-234-5678", Mail: "emily@test.com" },
-    { MusteriId: 5, AdSoyad: "Daniel Wilson", Adres: "Antalya, Konyaaltı", TelNo: "555-876-5432", Mail: "daniel@test.com" },
-    { MusteriId: 6, AdSoyad: "Sophia Taylor", Adres: "Trabzon, Orta Mahalle", TelNo: "555-345-6789", Mail: "sophia@test.com" },
-    { MusteriId: 7, AdSoyad: "James Anderson", Adres: "Kayseri, Erciyes Mahallesi", TelNo: "555-678-9012", Mail: "james@test.com" },
-    { MusteriId: 8, AdSoyad: "Olivia Martinez", Adres: "İzmir, Konak", TelNo: "555-111-2222", Mail: "olivia@test.com" },
-    { MusteriId: 9, AdSoyad: "William Thompson", Adres: "Samsun, Bafra", TelNo: "555-333-4444", Mail: "william@test.com" },
-    { MusteriId: 10, AdSoyad: "Ava Johnson", Adres: "Gaziantep, Şahinbey", TelNo: "555-555-6666", Mail: "ava@test.com" }
-];
+import React, { useEffect, useState } from 'react';
 
 export default function Müsteriler() {
 
     // --- State Yönetimi ---
     const [eklePenceresiAcikMi, setEklePenceresiAcikMi] = useState(false);
+
+    const [musteriListesi, setMusteriListesi] = useState([]);
+
+    // --- API BAĞLANTISI ---
+    useEffect(() => {
+        fetch("https://localhost:7137/Musteri")
+            .then(response => response.json())
+            .then(data => {
+                // API'den gelen veriyi buraya yüklüyoruz
+                setMusteriListesi(data);
+            })
+            .catch(error => console.error("Veri çekilirken hata:", error));
+    }, []);
 
     // --- Olay Yönetimi ---
     const ekleButonunaBasildi = () => setEklePenceresiAcikMi(true);
@@ -38,7 +37,7 @@ export default function Müsteriler() {
             <div>
                 {/* Kendo Grid: Sadece listeleme ve filtreleme yapar */}
                 <Grid
-                    data={ornekVeri}
+                    data={musteriListesi}
                     dataItemKey="ID"
                     pageable={true} // Sayfalama
                     sortable={true} // Sıralama
@@ -58,11 +57,15 @@ export default function Müsteriler() {
                     </GridToolbar>
 
                     {/* Sütunlar */}
-                    <Column field="MusteriId" title="ID" filterable={false} width="70px" />
-                    <Column field="AdSoyad" title="Müşteri Adı" width="200px" />
-                    <Column field="Adres" title="Adres" filterable={false} />
-                    <Column field="TelNo" title="Telefon No" filterable={false} />
-                    <Column field="Mail" title="E-Mail" filterable={false} />
+                    <Column field="musteriId" title="ID" filterable={false} width="70px" />
+
+                    <Column field="adSoyad" title="Müşteri Adı" width="200px" />
+
+                    <Column field="adres" title="Adres" filterable={false} />
+
+                    <Column field="telNo" title="Telefon No" filterable={false} />
+
+                    <Column field="mail" title="E-Mail" filterable={false} />
                 </Grid>
 
                 {/* --- Yeni Müşteri Ekleme Penceresi --- */}
