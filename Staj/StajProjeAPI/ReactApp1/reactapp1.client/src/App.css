@@ -1,30 +1,58 @@
 .ana-sayfa {
   display: flex;
-  /* Yan menü ve içerik alanını yatay olarak yerleştirir*/
   height: 100vh;
-  /* Tam ekran yüksekliği */
 }
 
 .yan-menu {
-  width: 200px;
-  /* Yan menü genişliği */
-  border-right: 2px solid black;
-  /* Sağ kenar çizgisi */
-  padding: 20px;
-  /* İç boşluk */
-  background-color: #f0f0f0;
-  /* Yan menü arka plan rengi */
+  width: 220px;
+  background-color: #1a2639;
+  /* Koyu Mavi */
+  padding: 25px 15px;
   display: flex;
-  /* Flexbox kullanımı */
   flex-direction: column;
-  /* Dikey yönlendirme */
   gap: 10px;
-  /* Menü öğeleri arasındaki boşluk */
+  color: #d4e4f7;
+  /* Açık Mavi Yazı */
+  box-shadow: 3px 0px 10px rgba(0, 0, 0, 0.2);
+  border: none;
+}
+
+.yan-menu h3 {
+  text-align: center;
+  font-size: 1.6em;
+  font-weight: 600;
+  margin: 0 0 20px 0;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #394a6d;
+}
+
+.yan-menu button {
+  background: transparent;
+  border: 0;
+  padding: 12px 15px;
+  width: 100%;
+  text-align: left;
+  color: #d4e4f7;
+  font-size: 1em;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.yan-menu button:hover {
+  background-color: #394a6d;
+  color: #fff;
+}
+
+.yan-menu button.aktif {
+  background-color: #5dadec;
+  /* Canlı Mavi */
+  color: #fff;
+  font-weight: 500;
 }
 
 .panel {
   flex: 1;
-  /* İçerik alanının kalan alanı kaplamasını sağlar */
   padding: 20px;
-  /* İç boşluk */
+  overflow-y: auto; /* İçerik taşarsa kaydırma çubuğu ekle */
 }

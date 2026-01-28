@@ -11,7 +11,7 @@ import Raporlar from './components/rapor/rapor.jsx'
 export default function App() { // B-) App bileşeni tanımlanıyor ve dışa aktarılıyor
   const [aktifSayfa, setAktifSayfa] = useState("AnaSayfa")
 
-  const butonStili = (sayfa) => aktifSayfa === sayfa ? { backgroundColor: "lightblue" } : {};
+  const getButonSinifi = (sayfa) => aktifSayfa === sayfa ? "aktif" : "";
 
   return (
     <div className='ana-sayfa'>
@@ -19,11 +19,11 @@ export default function App() { // B-) App bileşeni tanımlanıyor ve dışa ak
       {/* Yan Menü */}
       <div className='yan-menu'>
         <h3>Menü</h3>
-        <button style={butonStili("AnaSayfa")} onClick={() => setAktifSayfa("AnaSayfa")}>AnaSayfa</button>
-        <button style={butonStili("Urunler")} onClick={() => setAktifSayfa("Urunler")}>Ürünler</button>
-        <button style={butonStili("Müsteriler")} onClick={() => setAktifSayfa("Müsteriler")}>Müsteriler</button>
-        <button style={butonStili("Siparisler")} onClick={() => setAktifSayfa("Siparisler")}>Siparişler</button>
-        <button style={butonStili("Raporlar")} onClick={() => setAktifSayfa("Raporlar")}>Raporlar</button>
+        <button className={getButonSinifi("AnaSayfa")} onClick={() => setAktifSayfa("AnaSayfa")}>AnaSayfa</button>
+        <button className={getButonSinifi("Urunler")} onClick={() => setAktifSayfa("Urunler")}>Ürünler</button>
+        <button className={getButonSinifi("Müsteriler")} onClick={() => setAktifSayfa("Müsteriler")}>Müsteriler</button>
+        <button className={getButonSinifi("Siparisler")} onClick={() => setAktifSayfa("Siparisler")}>Siparişler</button>
+        <button className={getButonSinifi("Raporlar")} onClick={() => setAktifSayfa("Raporlar")}>Raporlar</button>
       </div>
 
       {/* İçerik Alanı */}

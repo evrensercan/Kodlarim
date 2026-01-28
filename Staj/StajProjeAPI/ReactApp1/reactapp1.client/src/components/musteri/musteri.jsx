@@ -15,7 +15,20 @@ export default function Müsteriler() {
     const [eklePenceresiAcikMi, setEklePenceresiAcikMi] = useState(false);
 
     const [musteriListesi, setMusteriListesi] = useState([]);
+    const [filter, setFilter] = useState(null); // Eksik olan filtre state'i eklendi
 
+    // Form verilerini tek bir nesnede tutuyoruz (Best Practice)
+    const [yeniMusteri, setYeniMusteri] = useState({
+        adSoyad: "",
+        adres: "",
+        telNo: "",
+        mail: ""
+    });
+
+    // State güncellemelerini anlık izlemek için useEffect kullanılır
+    useEffect(() => {
+        //console.log("Güncellenen yeniMusteri durumu:", yeniMusteri);
+    }, [yeniMusteri]);
 
     // --- API BAĞLANTISI ---
     useEffect(() => {
@@ -30,9 +43,41 @@ export default function Müsteriler() {
 
     // --- Olay Yönetimi ---
     const ekleButonunaBasildi = () => setEklePenceresiAcikMi(true);
-    const vazgecBasildi = () => setEklePenceresiAcikMi(false);
+    const vazgecBasildi = () => {
+        setEklePenceresiAcikMi(false);
+        // Pencere kapandığında formu temizlemek iyi bir pratiktir
+        setYeniMusteri({ adSoyad: "", adres: "", telNo: "", mail: "" });
+    };
 
+    // Generic input handler: Tüm inputlar için tek fonksiyon
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setYeniMusteri(prev => ({
+            ...prev,
+            [name]: value
+        }));
+    };
 
+    const onKaydet = () => {
+        // Veritabanına (API'ye) gönderme işlemi başlıyor
+        fetch("https://localhost:7137/Musteri", {
+            method: "POST",  // POST = Ekleme komutu
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(yeniMusteri) // Senin doldurduğun defteri pakete koyup gönderiyoruz
+        })
+            .then(response => {
+                // Eğer sunucudan "Tamam" cevabı gelirse:
+                if (response.ok) {
+                    alert("Müşteri Başarıyla Kaydedildi! ✅");
+                    setEklePenceresiAcikMi(false); // Pencereyi kapat
+                    setYeniMusteri({ adSoyad: "", adres: "", telNo: "", mail: "" }); // Formu temizle
+
+                    // Burası önemli: Listeyi hemen yenilemek için sayfayı F5 yapman gerekecek şimdilik.
+                } else {
+                    alert("Hata! Kaydedilemedi. ❌");
+                }
+            });
+    }
     return (
         <div>
             <h1>👥 Müşteriler</h1>
@@ -82,22 +127,50 @@ export default function Müsteriler() {
                                 {/* Form Alanları */}
                                 <div className="mb-3">
                                     <label>Adı Soyadı:</label>
-                                    <input className="k-input k-rounded-md k-p-2" type="text" placeholder="Ad Soyad..." />
+                                    <input
+                                        name="adSoyad"
+                                        value={yeniMusteri.adSoyad}
+                                        onChange={handleInputChange}
+                                        className="k-input k-rounded-md k-p-2"
+                                        type="text"
+                                        placeholder="Ad Soyad..."
+                                    />
                                 </div>
 
                                 <div className="mb-3">
                                     <label>Adres:</label>
-                                    <input className="k-input k-rounded-md k-p-2" type="text" placeholder="Adres..." />
+                                    <input
+                                        name="adres"
+                                        value={yeniMusteri.adres}
+                                        onChange={handleInputChange}
+                                        className="k-input k-rounded-md k-p-2"
+                                        type="text"
+                                        placeholder="Adres..."
+                                    />
                                 </div>
 
                                 <div className="mb-3">
                                     <label>Telefon No:</label>
-                                    <input className="k-input k-rounded-md k-p-2" type="text" placeholder="555-xxx-xx-xx" />
+                                    <input
+                                        name="telNo"
+                                        value={yeniMusteri.telNo}
+                                        onChange={handleInputChange}
+                                        className="k-input k-rounded-md k-p-2"
+                                        type="text"
+                                        placeholder="555-xxx-xx-xx"
+                                    />
                                 </div>
 
                                 <div className="mb-3">
                                     <label>E-Mail:</label>
-                                    <input className="k-input k-rounded-md k-p-2" type="email" placeholder="mail@ornek.com" />
+                                    <input
+                                        name="mail"
+                                        value={yeniMusteri.mail}
+                                        onChange={handleInputChange}
+                                        className="k-input k-rounded-md k-p-2"
+                                        type="email"
+                                        placeholder="mail@ornek.com"
+                                    />
                                 </div>
                             </fieldset>
                         </form>
@@ -106,7 +179,7 @@ export default function Müsteriler() {
                             <button className="k-button k-button-md k-rounded-md k-button-solid k-button-solid-base" onClick={vazgecBasildi}>
                                 Vazgeç
                             </button>
-                            <button className="k-button k-button-md k-rounded-md k-button-solid k-button-solid-primary">
+                            <button onClick={onKaydet} className="k-button k-button-md k-rounded-md k-button-solid k-button-solid-primary">
                                 Kaydet
                             </button>
                         </DialogActionsBar>
