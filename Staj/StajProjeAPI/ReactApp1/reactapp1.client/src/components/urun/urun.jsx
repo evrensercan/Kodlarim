@@ -2,6 +2,7 @@ import { Grid, GridColumn as Column, GridToolbar } from '@progress/kendo-react-g
 import { Dialog, DialogActionsBar } from '@progress/kendo-react-dialogs';
 import '@progress/kendo-theme-default/dist/all.css';
 import React, { useState, useEffect } from 'react';
+import { filterBy } from '@progress/kendo-data-query';
 
 export default function Urunler() {
 
