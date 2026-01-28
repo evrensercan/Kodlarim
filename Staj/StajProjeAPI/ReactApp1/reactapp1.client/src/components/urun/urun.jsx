@@ -8,18 +8,17 @@ export default function Urunler() {
 
     // --- State Yönetimi ---
     const [eklePenceresiAcikMi, setEklePenceresiAcikMi] = useState(false);
-
     const [urunListesi, setUrunListesi] = useState([]);
+
+    // DÜZELTME: İşte unuttuğumuz parça bu! Filtreleme hafızası.
+    const [filter, setFilter] = useState(null);
 
     // --- API BAĞLANTISI ---
     useEffect(() => {
         fetch("https://localhost:7137/Urun")
             .then(response => response.json())
-            .then(data => {
-                // API'den gelen veriyi buraya yüklüyoruz
-                setUrunListesi(data);
-            })
-            .catch(error => console.error("Veri çekilirken hata:", error));
+            .then(data => setUrunListesi(data))
+            .catch(error => console.error("Hata:", error));
     }, []);
 
     // --- Olay Yönetimi ---
@@ -32,11 +31,13 @@ export default function Urunler() {
 
             <div>
                 <Grid
-                    data={urunListesi}
+                    data={filterBy(urunListesi, filter)} // Filtrelenmiş veri
                     dataItemKey="UrunId"
                     pageable={true}
                     sortable={true}
                     filterable={true}
+                    filter={filter} // Hafızayı buraya bağladık
+                    onFilterChange={(e) => setFilter(e.filter)} // Değişince hafızayı güncelle
                     resizable={true}
                     style={{ height: "550px" }}
                 >
@@ -50,7 +51,6 @@ export default function Urunler() {
                         </button>
                     </GridToolbar>
 
-                    {/* Sütun İsimlerinin API ile BİREBİR aynı olduğundan emin ol */}
                     <Column field="urunId" title="ID" filterable={false} width="70px" />
                     <Column field="adi" title="Ürün Adı" width="200px" />
                     <Column field="kodu" title="Kodu" filterable={false} />
@@ -58,11 +58,11 @@ export default function Urunler() {
 
                 </Grid>
 
-                {/* --- Yeni Ekleme Penceresi (Şimdilik Görsel) --- */}
+                {/* --- Yeni Ekleme Penceresi --- */}
                 {eklePenceresiAcikMi && (
                     <Dialog title={"Yeni Ürün Ekle"} onClose={vazgecBasildi} width={450}>
                         <form className="k-form">
-                            <p>Burası şimdilik süs, sonra bağlayacağız.</p>
+                            <p>Burası şimdilik süs, birazdan canlandıracağız.</p>
                         </form>
                         <DialogActionsBar>
                             <button className="k-button" onClick={vazgecBasildi}>Vazgeç</button>

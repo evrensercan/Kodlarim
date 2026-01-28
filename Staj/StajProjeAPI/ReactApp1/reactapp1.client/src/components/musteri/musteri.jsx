@@ -7,6 +7,7 @@ import { Grid, GridColumn as Column, GridToolbar } from '@progress/kendo-react-g
 import { Dialog, DialogActionsBar } from '@progress/kendo-react-dialogs';
 import '@progress/kendo-theme-default/dist/all.css';
 import React, { useEffect, useState } from 'react';
+import { filterBy } from '@progress/kendo-data-query';
 
 export default function Müsteriler() {
 
@@ -14,6 +15,7 @@ export default function Müsteriler() {
     const [eklePenceresiAcikMi, setEklePenceresiAcikMi] = useState(false);
 
     const [musteriListesi, setMusteriListesi] = useState([]);
+
 
     // --- API BAĞLANTISI ---
     useEffect(() => {
@@ -30,6 +32,7 @@ export default function Müsteriler() {
     const ekleButonunaBasildi = () => setEklePenceresiAcikMi(true);
     const vazgecBasildi = () => setEklePenceresiAcikMi(false);
 
+
     return (
         <div>
             <h1>👥 Müşteriler</h1>
@@ -37,11 +40,13 @@ export default function Müsteriler() {
             <div>
                 {/* Kendo Grid: Sadece listeleme ve filtreleme yapar */}
                 <Grid
-                    data={musteriListesi}
+                    data={filterBy(musteriListesi, filter)}
                     dataItemKey="ID"
                     pageable={true} // Sayfalama
                     sortable={true} // Sıralama
                     filterable={true} // Filtreleme
+                    filter={filter}
+                    onFilterChange={(e) => setFilter(e.filter)}
                     resizable={true} // Sütun boyutlandırma
                     style={{ height: "550px" }}
                 >

@@ -7,6 +7,7 @@ import { Grid, GridColumn as Column, GridToolbar } from '@progress/kendo-react-g
 import { Dialog, DialogActionsBar } from '@progress/kendo-react-dialogs';
 import '@progress/kendo-theme-default/dist/all.css';
 import React, { useState, useEffect } from 'react';
+import { filterBy } from '@progress/kendo-data-query';
 
 
 
@@ -16,6 +17,7 @@ export default function Siparisler() {
     const [eklePenceresiAcikMi, setEklePenceresiAcikMi] = useState(false);
 
     const [siparisListesi, setSiparisListesi] = useState([]);
+    const [filter, setFilter] = useState(null);
 
     // --- API BAĞLANTISI ---
     useEffect(() => {
@@ -40,11 +42,13 @@ export default function Siparisler() {
             <div>
                 {/* Kendo Grid: Sadece listeleme ve filtreleme yapar */}
                 <Grid
-                    data={siparisListesi}
+                    data={filterBy(siparisListesi, filter)}
                     dataItemKey="siparisId"
                     pageable={true} // Sayfalama
                     sortable={true} // Sıralama
                     filterable={true} // Filtreleme
+                    filter={filter}
+                    onFilterChange={(e) => setFilter(e.filter)}
                     resizable={true} // Sütun boyutlandırma
                     style={{ height: "550px" }}
                 >
