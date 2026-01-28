@@ -6,26 +6,28 @@
 import { Grid, GridColumn as Column, GridToolbar } from '@progress/kendo-react-grid';
 import { Dialog, DialogActionsBar } from '@progress/kendo-react-dialogs';
 import '@progress/kendo-theme-default/dist/all.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-// --- Test Verisi (10 Siparişlik Liste) ---
-const ornekVeri = [
-    { SiparisId: 1, SiparisNo: "SIP001", MusteriAdi: "Evren Sercan", Ürün: "Bilgisayar", Tarih: "2026-01-15", Tutar: "48000", Durum: "Tamamlandı" },
-    { SiparisId: 2, SiparisNo: "SIP002", MusteriAdi: "Ahmet Yılmaz", Ürün: "Telefon", Tarih: "2026-01-16", Tutar: "25000", Durum: "Kargo" },
-    { SiparisId: 3, SiparisNo: "SIP003", MusteriAdi: "Michael Brown", Ürün: "Tablet", Tarih: "2026-01-17", Tutar: "15000", Durum: "Hazırlanıyor" },
-    { SiparisId: 4, SiparisNo: "SIP004", MusteriAdi: "Emily Davis", Ürün: "Klavye", Tarih: "2026-01-18", Tutar: "500", Durum: "Tamamlandı" },
-    { SiparisId: 5, SiparisNo: "SIP005", MusteriAdi: "Daniel Wilson", Ürün: "Fare", Tarih: "2026-01-19", Tutar: "200", Durum: "Bekleme" },
-    { SiparisId: 6, SiparisNo: "SIP006", MusteriAdi: "Sophia Taylor", Ürün: "Monitör", Tarih: "2026-01-20", Tutar: "8000", Durum: "Kargo" },
-    { SiparisId: 7, SiparisNo: "SIP007", MusteriAdi: "James Anderson", Ürün: "Yazıcı", Tarih: "2026-01-21", Tutar: "1200", Durum: "Tamamlandı" },
-    { SiparisId: 8, SiparisNo: "SIP008", MusteriAdi: "Olivia Martinez", Ürün: "Kamera", Tarih: "2026-01-22", Tutar: "3500", Durum: "Hazırlanıyor" },
-    { SiparisId: 9, SiparisNo: "SIP009", MusteriAdi: "William Thompson", Ürün: "Hoparlör", Tarih: "2026-01-23", Tutar: "800", Durum: "Kargo" },
-    { SiparisId: 10, SiparisNo: "SIP010", MusteriAdi: "Ava Johnson", Ürün: "USB Bellek", Tarih: "2026-01-24", Tutar: "400", Durum: "Bekleme" }
-];
+
 
 export default function Siparisler() {
 
     // --- State Yönetimi ---
     const [eklePenceresiAcikMi, setEklePenceresiAcikMi] = useState(false);
+
+    const [siparisListesi, setSiparisListesi] = useState([]);
+
+    // --- API BAĞLANTISI ---
+    useEffect(() => {
+        fetch("https://localhost:7137/api/Siparis")
+            .then(response => response.json())
+            .then(data => {
+                // API'den gelen veriyi buraya yüklüyoruz
+                console.log("GELEN SİPARİŞ VERİSİ:", data);
+                setSiparisListesi(data);
+            })
+            .catch(error => console.error("Veri çekilirken hata:", error));
+    }, []);
 
     // --- Olay Yönetimi ---
     const ekleButonunaBasildi = () => setEklePenceresiAcikMi(true);
@@ -38,8 +40,8 @@ export default function Siparisler() {
             <div>
                 {/* Kendo Grid: Sadece listeleme ve filtreleme yapar */}
                 <Grid
-                    data={ornekVeri}
-                    dataItemKey="ID"
+                    data={siparisListesi}
+                    dataItemKey="siparisId"
                     pageable={true} // Sayfalama
                     sortable={true} // Sıralama
                     filterable={true} // Filtreleme
@@ -58,13 +60,11 @@ export default function Siparisler() {
                     </GridToolbar>
 
                     {/* Sütunlar */}
-                    <Column field="SiparisId" title="ID" filterable={false} width="70px" />
-                    <Column field="SiparisNo" title="Sipariş No" width="120px" />
-                    <Column field="MusteriAdi" title="Müşteri Adı" width="180px" />
-                    <Column field="Ürün" title="Ürün" width="150px" />
-                    <Column field="Tarih" title="Tarih" filterable={false} width="120px" />
-                    <Column field="Tutar" title="Tutar (₺)" filterable={false} width="120px" />
-                    <Column field="Durum" title="Durum" width="130px" />
+                    <Column field="siparisId" title="ID" filterable={false} width="70px" />
+                    <Column field="musteri.adSoyad" title="Müşteri Adı" />
+                    <Column field="urun.adi" title="Ürün" />
+                    <Column field="toplamTutar" title="Tutar (₺)" filterable={false} width="120px" />
+                    <Column field="durum" title="Durum" width="130px" />
                 </Grid>
 
                 {/* --- Yeni Sipariş Ekleme Penceresi --- */}

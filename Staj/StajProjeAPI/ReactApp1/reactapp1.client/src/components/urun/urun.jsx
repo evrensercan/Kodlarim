@@ -1,7 +1,7 @@
 import { Grid, GridColumn as Column, GridToolbar } from '@progress/kendo-react-grid';
 import { Dialog, DialogActionsBar } from '@progress/kendo-react-dialogs';
 import '@progress/kendo-theme-default/dist/all.css';
-import React, { useState, useEffect } from 'react'; // useEffect'i eklemeyi unutma!
+import React, { useState, useEffect } from 'react';
 
 export default function Urunler() {
 
@@ -31,7 +31,7 @@ export default function Urunler() {
 
             <div>
                 <Grid
-                    data={urunListesi} // Artık canlı listeyi kullanıyor
+                    data={urunListesi}
                     dataItemKey="UrunId"
                     pageable={true}
                     sortable={true}

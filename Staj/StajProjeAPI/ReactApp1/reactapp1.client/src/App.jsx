@@ -11,22 +11,23 @@ import Raporlar from './components/rapor/rapor.jsx'
 export default function App() { // B-) App bileşeni tanımlanıyor ve dışa aktarılıyor
   const [aktifSayfa, setAktifSayfa] = useState("AnaSayfa")
 
+  const butonStili = (sayfa) => aktifSayfa === sayfa ? { backgroundColor: "lightblue" } : {};
+
   return (
     <div className='ana-sayfa'>
 
       {/* Yan Menü */}
       <div className='yan-menu'>
         <h3>Menü</h3>
-        <button onClick={() => setAktifSayfa("AnaSayfa")}>AnaSayfa</button>
-        <button onClick={() => setAktifSayfa("Urunler")}>Ürünler</button>
-        <button onClick={() => setAktifSayfa("Müsteriler")}>Müsteriler</button>
-        <button onClick={() => setAktifSayfa("Siparisler")}>Siparişler</button>
-        <button onClick={() => setAktifSayfa("Raporlar")}>Raporlar</button>
+        <button style={butonStili("AnaSayfa")} onClick={() => setAktifSayfa("AnaSayfa")}>AnaSayfa</button>
+        <button style={butonStili("Urunler")} onClick={() => setAktifSayfa("Urunler")}>Ürünler</button>
+        <button style={butonStili("Müsteriler")} onClick={() => setAktifSayfa("Müsteriler")}>Müsteriler</button>
+        <button style={butonStili("Siparisler")} onClick={() => setAktifSayfa("Siparisler")}>Siparişler</button>
+        <button style={butonStili("Raporlar")} onClick={() => setAktifSayfa("Raporlar")}>Raporlar</button>
       </div>
 
       {/* İçerik Alanı */}
       <div className='panel' >
-        <h2 style={{ borderBottom: '3px solid gray' }}>Panel: {aktifSayfa}</h2>
         {aktifSayfa === "AnaSayfa" && <AnaSayfa />}
         {aktifSayfa === "Urunler" && <Urunler />}
         {aktifSayfa === "Müsteriler" && <Müsteriler />}

@@ -5,7 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddScoped<MusteriServis>();
 builder.Services.AddScoped<UrunServis>();
-// builder.Services.AddScoped<SiparisServis>();
+builder.Services.AddScoped<SiparisServis>();
 
 
 // --- 2. CORS AYARLARI (React ile konuþma izni) ---
@@ -13,7 +13,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("ReactIzin", policy =>
     {
-        policy.WithOrigins("http://localhost:5173") // React'ýn adresi
+        policy.WithOrigins("http://localhost:5173", "http://localhost:5174") // React'ýn adresi
               .AllowAnyHeader()
               .AllowAnyMethod();
     });
